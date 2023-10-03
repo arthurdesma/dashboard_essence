@@ -10,6 +10,8 @@ from gas_station_density import generate_gas_station_density_map
 from fuel_prices import generate_fuel_prices_map
 from graph import update_gas_price_graph
 from heat_map import generate_map, fuel_types
+from fuel_histogram import generate_fuel_histogram
+
 
 # Charger les données
 df2 = pd.read_csv("prix-des-carburants-en-france-flux-instantane-v2.csv", delimiter=";", dtype={'Code postal': str})
@@ -67,6 +69,10 @@ app.layout = dbc.Container([
             ]
         ), md=6, className="shadow-sm")
     ], className="mb-4"),
+    
+    
+    
+
 
     # Section de la carte thermique avec mise en page de la carte
     dbc.Row(dbc.Col(dbc.Card(
@@ -90,8 +96,18 @@ app.layout = dbc.Container([
             )
         )
     ]
-), className="mb-4 shadow-sm"))
-
+), className="mb-4 shadow-sm"),),
+    
+    dbc.Row(dbc.Col(dbc.Card(
+        [
+            dbc.CardHeader(html.H4('Histogramme des prix des carburants', className="card-title text-center")),
+            dbc.CardBody([
+                html.P("Cet histogramme montre la distribution des prix des différents types de carburants.", className="text-muted text-center mb-4"),
+                dcc.Graph(figure=generate_fuel_histogram())
+            ])
+        ]
+    ), className="mb-4 shadow-sm"))
+    
 
 ], fluid=True, className="mt-4 p-4")
 

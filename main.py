@@ -9,6 +9,8 @@ from gas_station_density import generate_gas_station_density_map
 from fuel_prices import generate_fuel_prices_map
 from graph import update_gas_price_graph
 from heat_map import get_heat_map_layout  # Import the heat map layout function
+from fuel_histogram import generate_fuel_histogram
+
 
 # Load data for dropdown
 df2 = pd.read_csv("prix-des-carburants-en-france-flux-instantane-v2.csv", delimiter=";", dtype={'Code postal': str})
@@ -39,7 +41,7 @@ app.layout = html.Div([
     dcc.Dropdown(id='department-dropdown', options=options, value='06'),
     html.Iframe(id="fuel-prices-map", srcDoc=generate_fuel_prices_map('06'), width="100%", height="600"),
     layout_gas_price,
-    get_heat_map_layout()  # Add the heat map layout to the main layout
+    get_heat_map_layout(),  # Add the heat map layout to the main layout
 ])
 
 @app.callback(
