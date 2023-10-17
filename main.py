@@ -11,7 +11,10 @@ from fuel_prices import generate_fuel_prices_map
 from graph import update_gas_price_graph
 from heat_map import generate_map, fuel_types
 from fuel_histogram import generate_fuel_histogram
+from xml_to_csv import parse_xml_to_csv
 
+#changer les donne xml en données csv
+#parse_xml_to_csv
 
 # Charger les données
 df2 = pd.read_csv("data/prix-des-carburants-en-france-flux-instantane-v2.csv", delimiter=";", dtype={'Code postal': str})
