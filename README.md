@@ -50,5 +50,3 @@ Le code est organisé en plusieurs modules:
 1. Pour ajouter une nouvelle visualisation, créez un nouveau fichier `.py` pour cette visualisation et définissez les fonctions nécessaires.
 2. Importez ces fonctions dans `main.py` et intégrez-les dans la mise en page Dash ou ajoutez des callbacks pour la mise à jour interactive.
 3. Pour modifier une visualisation existante, trouvez le fichier correspondant et apportez les modifications nécessaires. Assurez-vous de tester les modifications avant de les intégrer dans le tableau de bord principal.
-
-N'oubliez pas de documenter tout code ajouté ou modifié pour assurer la lisibilité et la maintenabilité.
