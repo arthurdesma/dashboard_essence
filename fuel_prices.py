@@ -4,7 +4,7 @@ from folium.plugins import MarkerCluster
 
 def generate_fuel_prices_map(selected_department='06'):
     # Load data from the CSV file
-    df2 = pd.read_csv("prix-des-carburants-en-france-flux-instantane-v2.csv", delimiter=";", dtype={'Code postal': str})
+    df2 = pd.read_csv("data/prix-des-carburants-en-france-flux-instantane-v2.csv", delimiter=";", dtype={'Code postal': str})
     df2 = df2.drop(columns=['latitude', 'longitude'])
 
     filtered_df = df2[df2['Code postal'].astype(str).str.startswith(selected_department)]

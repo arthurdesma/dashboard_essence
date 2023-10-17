@@ -3,7 +3,7 @@ import pandas as pd
 
 def parse_xml_to_csv():
     # Parse the XML file
-    tree = ET.parse('PrixCarburants_annuel_2022.xml')
+    tree = ET.parse('data/PrixCarburants_annuel_2022.xml')
     root = tree.getroot()
 
     # Initialize lists to store data
@@ -47,4 +47,4 @@ def parse_xml_to_csv():
     # Print the DataFrame
     #print(df)
 
-    df.to_csv('PrixCarburants_annuel_2022.csv', index=False)
+    df.to_csv('data/PrixCarburants_annuel_2022.csv', index=False)

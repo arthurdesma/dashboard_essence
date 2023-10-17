@@ -3,10 +3,10 @@ import geopandas as gpd
 import folium
 
 # Load the required data.
-df = pd.read_csv('prix-des-carburants-en-france-flux-instantane-v2.csv', delimiter=";")
+df = pd.read_csv('data/prix-des-carburants-en-france-flux-instantane-v2.csv', delimiter=";")
 df['Dept_code'] = df['Code postal'] // 1000
 
-gdf_departements = gpd.read_file('departements.geojson')
+gdf_departements = gpd.read_file('data/departements.geojson')
 gdf_departements['code'] = gdf_departements['code'].replace({'2A': '20', '2B': '20'}).astype(int)
 
 fuel_types = [col.replace('_prix', '') for col in df.columns if '_prix' in col][:6]

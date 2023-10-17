@@ -14,11 +14,11 @@ from fuel_histogram import generate_fuel_histogram
 
 
 # Charger les données
-df2 = pd.read_csv("prix-des-carburants-en-france-flux-instantane-v2.csv", delimiter=";", dtype={'Code postal': str})
+df2 = pd.read_csv("data/prix-des-carburants-en-france-flux-instantane-v2.csv", delimiter=";", dtype={'Code postal': str})
 departements = sorted(df2['Code postal'].astype(str).str[:2].unique())
 options = [{'label': dept, 'value': dept} for dept in departements]
 
-df1 = pd.read_csv('PrixCarburants_annuel_2022.csv')
+df1 = pd.read_csv('data/PrixCarburants_annuel_2022.csv')
 grouped_df = df1.groupby(['Date', 'Gas_Type'])['Price'].mean().reset_index()
 
 # Initialiser l'application Dash

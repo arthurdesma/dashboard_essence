@@ -4,7 +4,7 @@ from xml_to_csv import parse_xml_to_csv
 
 #parse_xml_to_csv()
 
-df1 = pd.read_csv('PrixCarburants_annuel_2022.csv')
+df1 = pd.read_csv('data/PrixCarburants_annuel_2022.csv')
 grouped_df = df1.groupby(['Date', 'Gas_Type'])['Price'].mean().reset_index()
 
 def update_gas_price_graph(selected_gas_type):

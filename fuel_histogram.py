@@ -3,7 +3,7 @@ import pandas as pd
 import plotly.graph_objs as go
 
 def generate_fuel_histogram():
-    data = pd.read_csv("prix-des-carburants-en-france-flux-instantane-v2.csv", delimiter=";")
+    data = pd.read_csv("data/prix-des-carburants-en-france-flux-instantane-v2.csv", delimiter=";")
 
     # Extract the price columns for different fuel types
     gazole_prices = data["Gazole_prix"]

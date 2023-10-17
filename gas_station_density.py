@@ -4,13 +4,13 @@ import folium
 
 def generate_gas_station_density_map():
     # Read the CSV file
-    df = pd.read_csv('prix-des-carburants-en-france-flux-instantane-v2.csv', delimiter=";")
+    df = pd.read_csv('data/prix-des-carburants-en-france-flux-instantane-v2.csv', delimiter=";")
 
     # Extract the first two digits from the 'Code postal' column
     df['Dept_code'] = df['Code postal'] // 1000  # Integer division by 1000 to get the first two digits.
 
     # Read the geojson file
-    gdf_departements = gpd.read_file('departements.geojson')
+    gdf_departements = gpd.read_file('data/departements.geojson')
 
     # Group by 'Dept_code' to count the number of gas stations per department code
     gas_station_density = df.groupby('Dept_code').size().reset_index(name='count')
