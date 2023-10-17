@@ -70,10 +70,6 @@ app.layout = dbc.Container([
         ), md=6, className="shadow-sm")
     ], className="mb-4"),
     
-    
-    
-
-
     # Section de la carte thermique avec mise en page de la carte
     dbc.Row(dbc.Col(dbc.Card(
     [
@@ -84,17 +80,16 @@ app.layout = dbc.Container([
                     html.Div(
                         [
                             html.H5(fuel.capitalize(), className="text-center mb-3"),
-                            html.Iframe(srcDoc=open(map_file, 'r').read(), width='100%', height='600', className="border-0")
+                            html.Iframe(srcDoc=generate_map(fuel).get_root().render(), width='100%', height='600', className="border-0")
                         ],
                         className="mb-4",
-                        style={"width": "33%", "height": "600px"}  # Ici, nous définissons la taille du conteneur de chaque carte.
+                        style={"width": "33%", "height": "600px"}
                     )
-                    # zip() = combine 2 listes
-                    for fuel, map_file in zip(fuel_types, map_files)
+                    for fuel in fuel_types
                 ],
                 style={"display": "flex", "flexDirection": "row", "flexWrap": "wrap", "justifyContent": "space-between"}
+                )
             )
-        )
     ]
 ), className="mb-4 shadow-sm"),),
     

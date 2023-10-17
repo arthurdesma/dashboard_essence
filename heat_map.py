@@ -22,5 +22,5 @@ def generate_map(fuel_type):
         fill_color='YlOrRd', fill_opacity=0.7, line_opacity=0.2,
         legend_name=f'Average {fuel_type} Price in €'
     ).add_to(m)
-    m.save(f'avg_{fuel_type}_price_per_department.html')
-    return f'avg_{fuel_type}_price_per_department.html'
+    return m
+

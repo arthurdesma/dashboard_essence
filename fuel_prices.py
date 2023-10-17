@@ -53,5 +53,4 @@ def generate_fuel_prices_map(selected_department='06'):
 
     folium.LayerControl().add_to(m)
 
-    m.save('fuel_prices_map.html')
-    return open("fuel_prices_map.html", "r", encoding='utf-8').read()
+    return m._repr_html_()

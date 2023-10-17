@@ -34,5 +34,4 @@ def generate_gas_station_density_map():
         legend_name='Gas Station Density'
     ).add_to(m)
 
-    m.save('gas_station_density.html')
-    return open('gas_station_density.html', 'r').read()
+    return m._repr_html_()
