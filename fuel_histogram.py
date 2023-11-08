@@ -2,16 +2,15 @@
 import pandas as pd
 import plotly.graph_objs as go
 
-def generate_fuel_histogram():
-    data = pd.read_csv("data/prix-des-carburants-en-france-flux-instantane-v2.csv", delimiter=";")
+def generate_fuel_histogram(df2):
 
     # Extract the price columns for different fuel types
-    gazole_prices = data["Gazole_prix"]
-    sp95_prices = data["SP95_prix"]
-    e85_prices = data["E85_prix"]
-    gplc_prices = data["GPLc_prix"]
-    e10_prices = data["E10_prix"]
-    sp98_prices = data["SP98_prix"]
+    gazole_prices = df2["Gazole_prix"]
+    sp95_prices = df2["SP95_prix"]
+    e85_prices = df2["E85_prix"]
+    gplc_prices = df2["GPLc_prix"]
+    e10_prices = df2["E10_prix"]
+    sp98_prices = df2["SP98_prix"]
 
     trace1 = go.Histogram(x=gazole_prices, name='Gazole', opacity=0.5)
     trace2 = go.Histogram(x=sp95_prices, name='SP95', opacity=0.5)

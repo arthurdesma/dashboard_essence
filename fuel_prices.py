@@ -2,7 +2,7 @@ import pandas as pd
 import folium
 from folium.plugins import MarkerCluster
 
-def generate_fuel_prices_map(selected_department='06'):
+def generate_fuel_prices_map(df2,selected_department='06'):
     # Load data from the CSV file
     df2 = pd.read_csv("data/prix-des-carburants-en-france-flux-instantane-v2.csv", delimiter=";", dtype={'Code postal': str})
     df2 = df2.drop(columns=['latitude', 'longitude'])

@@ -17,12 +17,13 @@ from xml_to_csv import parse_xml_to_csv
 #parse_xml_to_csv
 
 # Charger les données
-df2 = pd.read_csv("data/prix-des-carburants-en-france-flux-instantane-v2.csv", delimiter=";", dtype={'Code postal': str})
+df2 = pd.read_csv("data/prix-des-carburants-en-france-flux-instantane-v2.csv", delimiter=";")
 departements = sorted(df2['Code postal'].astype(str).str[:2].unique())
 options = [{'label': dept, 'value': dept} for dept in departements]
 
 df1 = pd.read_csv('data/PrixCarburants_annuel_2022.csv')
 grouped_df = df1.groupby(['Date', 'Gas_Type'])['Price'].mean().reset_index()
+
 
 # Initialiser l'application Dash
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
@@ -50,7 +51,7 @@ app.layout = dbc.Container([
                 dbc.CardHeader(html.H4("Densité des stations-service", className="card-title text-center")),
                 dbc.CardBody([
                     html.P("Cette carte montre la densité des stations-service à travers la France. Les régions plus denses indiquent un plus grand nombre de stations-service dans cette localité.", className="text-muted text-center mb-4"),
-                    html.Iframe(id='gas-density-map', srcDoc=generate_gas_station_density_map(), width='100%', height='600', className="border-0")
+                    html.Iframe(id='gas-density-map', srcDoc=generate_gas_station_density_map(df2), width='100%', height='600', className="border-0")
                 ])
             ]
         ), md=6, className="mb-4 shadow-sm"),
@@ -101,7 +102,7 @@ app.layout = dbc.Container([
             dbc.CardHeader(html.H4('Histogramme des prix des carburants', className="card-title text-center")),
             dbc.CardBody([
                 html.P("Cet histogramme montre la distribution des prix des différents types de carburants.", className="text-muted text-center mb-4"),
-                dcc.Graph(figure=generate_fuel_histogram())
+                dcc.Graph(figure=generate_fuel_histogram(df2))
             ])
         ]
     ), className="mb-4 shadow-sm"))
@@ -122,7 +123,7 @@ def update_map(departement_selectionne):
     [Input('gas-type-dropdown', 'value')]
 )
 def update_graph(type_carburant_selectionne):
-    return update_gas_price_graph(type_carburant_selectionne)
+    return update_gas_price_graph(type_carburant_selectionne,df1)
 
 # Principal
 if __name__ == '__main__':
