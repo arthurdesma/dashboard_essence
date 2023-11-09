@@ -1,8 +1,6 @@
 import pandas as pd
 import plotly.express as px
-from xml_to_csv import parse_xml_to_csv
 
-#parse_xml_to_csv()
 
 def update_gas_price_graph(selected_gas_type,df1):
     grouped_df = df1.groupby(['Date', 'Gas_Type'])['Price'].mean().reset_index()
